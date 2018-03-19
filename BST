@@ -1,0 +1,96 @@
+#include <iostream>
+using namespace std;
+
+class node {
+
+public:
+int data;
+node *parent;
+node *left;
+node *right;
+
+node (){
+parent=left=right=NULL;
+}
+};
+
+class binarysearchtree {
+
+public:
+node *root;
+binarysearchtree(){
+root=NULL;
+}
+
+void insert(node *root,int data){
+if (root=NULL){
+node *temp=new node;
+temp->data=data;
+temp->parent=NULL;
+temp->left=NULL;
+temp->right=NULL;
+root=temp;
+}
+else if (data < root->data){
+if (root->left=NULL){
+insertdata (root,data);}
+else { 
+insert (root->left,data);}}
+
+else {
+if (root->right=NULL){
+insertdata (root,data);}
+else {
+insert (root->right,data);}}}
+
+void insertdata (node *root,int data){
+node *temp=new node;
+temp->data=data;
+temp->parent =root;
+temp->left=NULL;
+temp->right=NULL;
+}
+
+
+void display(node *temp){
+if (temp=NULL){
+cout<<"Error";
+return;
+}
+display (temp->left);
+cout<<temp->data;
+display (temp->right);
+}
+};
+
+
+int main(){
+binarysearchtree b;
+int i;
+int p;
+int d;
+int m=1;
+while (m==1){
+cout <<" Choose an option : 1.insert 2.display ";
+cin>>i;
+
+switch (i){
+case 1 :
+	cout<<"Enter Data : ";
+	cin>>d;
+	b.insert (b.root,d);
+	break;
+case 2 :
+	b.display (b.root);
+	break;
+default :
+	cout<<"Choose a valid option";
+	break;
+}
+
+cout<<"Do you want to carry out more operations ? Enter y=1 or n=2 ~ ";
+cin>>m;
+}
+
+return 0;
+}
