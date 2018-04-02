@@ -1,0 +1,104 @@
+
+#include <iostream>
+using namespace std;
+
+struct node                         //defining node structure
+
+{   int data;
+    struct node *left;
+    struct node *right;
+
+}*root;
+
+class BST{
+  public:
+  BST(){
+  root = NULL;}
+  
+  void insert(node *tree, int a){
+    node *temp = new node;
+    temp->data = a;
+    temp->right = NULL;              //Initialising node structure
+    temp->left = NULL;
+    if (root == NULL){
+      root=temp;
+    }
+    if (tree != NULL){               //self-explanatory
+      if (temp->data > tree->data){
+        if (tree->right != NULL){
+          insert(tree->right,temp->data);}
+        else{
+          tree->right = temp;}
+      }
+      if (temp->data < tree->data){
+        if (tree->left != NULL){
+        insert(tree->left,temp->data);}
+        else{
+        tree->left = temp;}
+        
+      }
+      if (temp->data == tree->data){
+        cout << "node exists already";
+      }
+    }
+  }
+
+node *address1 = new node;
+node *address2 = new node;
+
+void rsearch (int data1, int data2, node *temp ){
+
+if (temp==NULL){
+cout<<"Node not Found"; 
+return;}
+
+else {
+if (temp->data==data1){
+address1=temp;}
+else if (data1<temp->data){
+rsearch (data1,data2,temp->left);}
+else {
+rsearch (data1,data2,temp->right);}}
+
+
+if (temp->data==data2){
+address2=temp;}
+else if (data1<temp->data){
+rsearch (data1,data2,temp->left);}
+else {
+rsearch (data1,data2,temp->right);}}
+
+display (temp,address1,address2);
+}
+
+
+void display (node *temp,node *temp1,node *temp2){
+
+int c=0;
+
+display (temp->left,temp1,temp2);
+if (temp->data=temp1->data && temp->data <=temp2->data){
+cout<<temp->data<<"-----------------";
+c=c+1;}
+display (temp->right,temp1,temp2);
+
+cout<<"The number of nodes are : "<<c;}
+
+};
+
+
+int main(){
+  BST bst;
+  bst.insert(root,10);
+  bst.insert(root,7);
+  bst.insert(root,3);
+  bst.insert(root,5);
+  bst.insert(root,11);
+  cout << endl;
+  bst.rsearch(5,10,root);
+
+return 0;}
+
+
+
+
