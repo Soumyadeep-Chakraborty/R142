@@ -1,0 +1,99 @@
+#include <iostream>
+using namespace std;
+
+
+int main(){
+
+int a[100];
+int e,k,c=1,n=0,p=0,t=0,m=0,z=1,b;
+while (c==1){
+
+cout<<"What do you want to do ? - 1.Insert 2.Display 3.Delete : 4.Sort";
+cin>>k;
+
+switch (k)
+{
+	case 1:
+
+	cout << "Enter an element : ";
+      	cin>>e;
+	
+	if (a[0]==NULL){ 
+	a[0]=e;
+	break; }
+
+	else {
+	if (a[2*n+1]==NULL){ 
+	a[2*n+1]=e;
+	if (a[2*n+1]>a[n]){
+	t=a[2*n+1];
+	a[2*n+1]=a[n];
+	a[n]=t; }}
+	else {
+	a[2*n+2]=e;
+	if (a[2*n+2]>a[n]){
+	t=a[2*n+2];
+	a[2*n+2]=a[n];
+	a[n]=t; }}}
+
+	p++;
+
+	if (p%2==0){
+	n=n+1;
+	}
+	b=2*n+2;
+	break;
+
+	case 2:
+
+	if (a[b]!=NULL){
+	for (int i=0;i<=b;i++){
+	cout<<"-------------"<<a[i];
+	i=i+1;
+	}
+	break;}
+	else{
+	for (int i=0;i<=b-1;i++){
+	cout<<"-------------"<<a[i];
+	i=i+1;
+	}
+	break;}
+
+	case 3:
+	
+	if (a[b]!=NULL){
+	a[m]=a[b];
+	b=b-1;}
+	
+	else {
+	a[m]=a[b-1];
+	b=b-1;}
+
+	while (z<=b){
+	if (a[z]>=a[z+1]){
+	if (a[z]>a[m]){
+	t=a[m];
+	a[m]=a[z];
+	a[z]=t;}
+	else {break;}}
+	else {
+	if (a[z+1]>a[m]){
+	t=a[m];
+	a[m]=a[z+1];
+	a[z+1]=t;}
+	else {break;}}
+	m=m+1;
+	z=2*m+1; }
+
+	break;
+
+	default :
+	cout<<"Enter correct choice ";
+	break;
+}
+ 	cout <<"\nDo you want to implement more function ? 1.Yes 2.No : ";
+	cin>>c;
+}
+
+return 0;
+}	
